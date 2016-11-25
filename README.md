@@ -24,6 +24,12 @@ cd; curl -#L https://github.com/kevin-jones/dotfiles/tarball/master | tar -xzv -
 
 To update later on, just run that command again.
 
+### Set up Vim
+
+To use the Ag search plugin you must first install the Ag Silver Searcher to your machine as per instructions at https://github.com/ggreer/the_silver_searcher
+
+Once you've done that, you can use `<Leader>f` in Vim to quickly search all files in your current working directory. 
+
 ### Set up Git
 
 ```bash
