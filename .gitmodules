@@ -2,26 +2,26 @@
 	path = .vim/bundle/fugitive
 	url = http://github.com/tpope/vim-fugitive.git
 [submodule "ag"]
-	path = ag
+	path = .vim/bundle/ag
 	url = https://github.com/rking/ag.vim
 [submodule "ctrlp"]
-	path = ctrlp
+	path = .vim/bundle/ctrlp
 	url = https://github.com/ctrlpvim/ctrlp.vim.git
 [submodule "nerdtree"]
-	path = nerdtree
+	path = .vim/bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
 [submodule "php"]
-	path = php
+	path = .vim/bundle/php
 	url = https://github.com/StanAngeloff/php.vim.git
 [submodule "phpcomplete"]
-	path = phpcomplete
+	path = .vim/bundle/phpcomplete
 	url = https://github.com/shawncplus/phpcomplete.vim.git
 [submodule "supertab"]
-	path = supertab
+	path = .vim/bundle/supertab
 	url = https://github.com/ervandew/supertab.git
 [submodule "tagbar"]
-	path = tagbar
+	path = .vim/bundle/tagbar
 	url = https://github.com/majutsushi/tagbar.git
 [submodule "tcomment_vim"]
-	path = tcomment_vim
+	path = .vim/bundle/tcomment_vim
 	url = https://github.com/tomtom/tcomment_vim
