@@ -2,8 +2,14 @@
 
 cd "$(dirname "${BASH_SOURCE}")";
 
+# set up git
+git config --global core.editor "vim"
+
+# update dotfiles
 git pull origin master;
 git submodule update --init --recursive;
+
+# install pathogen
 mkdir -p .vim/autoload;
 curl -LSso .vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim;
 
