@@ -3,6 +3,9 @@
 cd "$(dirname "${BASH_SOURCE}")";
 
 git pull origin master;
+git submodule update --init --recursive;
+mkdir -p autoload;
+curl -LSso autoload/pathogen.vim https://tpo.pe/pathogen.vim;
 
 function doIt() {
 	rsync --exclude ".git/" --exclude ".DS_Store" --exclude "bootstrap.sh" \
