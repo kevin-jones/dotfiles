@@ -4,15 +4,26 @@ let mapleader=","
 let g:ctrlp_map = '<leader>t'
 imapclear
 abclear
+map <leader>b :CtrlPBuffer<CR>
 map <leader>n :NERDTreeToggle<CR>
 map <leader>` :TagbarToggle<CR>
 map <leader>f :Ag<space>
 map <leader>cd :cd %:p:h<CR>:pwd<CR>
+
+" When editing mixed HTML/PHP files (i.e. views) sometimes
+" indentation can be confused. This can be resolved usually
+" by switching to HTML mode, then indenting (e.g. = OR <Cmd-a>= OR :gg=G``) 
+" set the current file's syntax/indenting mode to PHP
 map <leader>p :call ModePHP()<CR>
+" set the current file's syntax/indenting mode to HTML
 map <leader>h :call ModeHTML()<CR>
+
+" look up the word under the cursor on php.net
 map <F7> :call PHPHelp()<cr>
+" look up the word under the cursor on Google
 map <F8> :call GoogleWord()<cr>
 map <F9> :call ViewInBrowser()<cr>
+" switch between normal and relative line numbering
 nnoremap <C-n> :call NumberToggle()<cr>
 
 " console.log();
@@ -72,6 +83,8 @@ set secure
 set number
 " Enable syntax highlighting
 syntax on
+" Set line height
+set linespace=2
 " Highlight current line
 set cursorline
 " Highlight searches
