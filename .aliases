@@ -83,7 +83,7 @@ alias clear="echo '================= CLEAR $(date +%x\ %H:%M:%S) ===============
 alias art="php artisan"
 
 # Shopblocks-specific aliases for use within vagrant/ubuntu environment
-alias flush='echo flush_all | nc localhost 11211'
+alias flush='echo flush_all | nc localhost 11211 && redis-cli flushall'
 alias v='cd /var/www/vhosts'
 alias mc='cd /var/www/vhosts/miribase && php miribase'
 alias profile='php /var/www/vhosts/miribase/miribase live:profile'
