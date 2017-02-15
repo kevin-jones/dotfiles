@@ -18,6 +18,8 @@ map <leader>p :call ModePHP()<CR>
 " set the current file's syntax/indenting mode to HTML
 map <leader>h :call ModeHTML()<CR>
 
+map <leader>i :gg=G``<CR>
+
 " look up the word under the cursor on php.net
 map <F7> :call PHPHelp()<cr>
 " look up the word under the cursor on Google
@@ -83,8 +85,6 @@ set secure
 set number
 " Enable syntax highlighting
 syntax on
-" Set line height
-set linespace=2
 " Highlight current line
 set cursorline
 " Highlight searches
@@ -182,4 +182,7 @@ function! ModePHP()
     set filetype=php
     set syntax=php
 endfunction
+
+" Set line height
+set linespace=2
 
