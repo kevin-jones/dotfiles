@@ -32,7 +32,7 @@ alias localip="ipconfig getifaddr en0"
 alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
 
 # Flush Directory Service cache
-alias flush="dscacheutil -flushcache && killall -HUP mDNSResponder"
+alias flushdns="dscacheutil -flushcache && killall -HUP mDNSResponder"
 
 # Clean up LaunchServices to remove duplicates in the “Open With” menu
 alias lscleanup="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user && killall Finder"
@@ -86,7 +86,7 @@ alias clear="echo '================= CLEAR $(date +%x\ %H:%M:%S) ===============
 alias art="php artisan"
 
 # Shopblocks-specific aliases for use within vagrant/ubuntu environment
-alias flush='echo flush_all | nc localhost 11211 && redis-cli flushall'
+alias flush='echo "Flushing Memcached" && echo flush_all | nc localhost 11211 && echo "Flushing Redis"  && redis-cli flushall'
 alias v='cd /var/www/vhosts'
 alias mc='cd /var/www/vhosts/miribase && php miribase'
 alias profile='php /var/www/vhosts/miribase/miribase live:profile'

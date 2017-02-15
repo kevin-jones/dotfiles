@@ -116,6 +116,9 @@ set showcmd
 	"set relativenumber
 	"au BufReadPost * set relativenumber
 "endif
+" Prevent double-quotes being hidden in JSON
+let g:vim_json_syntax_conceal = 0
+set conceallevel=0
 
 function! NumberToggle()
   if(&relativenumber == 1)
