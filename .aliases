@@ -97,8 +97,8 @@ alias update='bash ~/v/sandbox/update_projects.sh'
 alias release='php mothership release'
 
 # mac osx environment
-alias vup='cd ~/vc && vagrant up'
-alias vssh='cd ~/vc && vagrant ssh'
+alias vup='cd ~ && vagrant up'
+alias vssh='cd ~ && vagrant ssh'
 
 alias ll='ls -alF'
 alias l="ls -lF ${colorflag}"

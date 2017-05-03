@@ -2,29 +2,43 @@ execute pathogen#infect()
 " Change mapleader
 let mapleader=","
 let g:ctrlp_map = '<leader>t'
+let g:ctrlp_max_files=0
+let g:ctrlp_max_depth=40
 imapclear
 abclear
-map <leader>b :CtrlPBuffer<CR>
-map <leader>n :NERDTreeToggle<CR>
-map <leader>` :TagbarToggle<CR>
-map <leader>f :Ag<space>
-map <leader>cd :cd %:p:h<CR>:pwd<CR>
+
+" RELOAD VIMRC across all windows/tabs
+nnoremap <leader>v :tabdo source $MYVIMRC<CR>
+
+nnoremap <leader>b :CtrlPBuffer<CR>
+nnoremap <Leader>n :NERDTreeTabsToggle<CR>
+nnoremap <leader>` :TagbarToggle<CR>
+
+" find current file in NERDTree
+nnoremap <leader>r :NERDTreeFind<CR>
+
+" open Ag for searching within all project files
+nnoremap <leader>f :Ag<space>
+nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
+
+" disable annoying "ex mode"
+nnoremap Q <Nop>
 
 " When editing mixed HTML/PHP files (i.e. views) sometimes
 " indentation can be confused. This can be resolved usually
 " by switching to HTML mode, then indenting (e.g. = OR <Cmd-a>= OR :gg=G``) 
 " set the current file's syntax/indenting mode to PHP
-map <leader>p :call ModePHP()<CR>
+nnoremap <leader>p :call ModePHP()<CR>
 " set the current file's syntax/indenting mode to HTML
-map <leader>h :call ModeHTML()<CR>
+nnoremap <leader>h :call ModeHTML()<CR>
 
-map <leader>i :gg=G``<CR>
+nnoremap <leader>i :gg=G``<CR>
 
 " look up the word under the cursor on php.net
-map <F7> :call PHPHelp()<cr>
+nnoremap <F7> :call PHPHelp()<cr>
 " look up the word under the cursor on Google
-map <F8> :call GoogleWord()<cr>
-map <F9> :call ViewInBrowser()<cr>
+nnoremap <F8> :call GoogleWord()<cr>
+nnoremap <F9> :call ViewInBrowser()<cr>
 " switch between normal and relative line numbering
 nnoremap <C-n> :call NumberToggle()<cr>
 
@@ -39,7 +53,7 @@ if has('gui_running')
     set background=dark
     colorscheme solarized
     let g:solarized_termtrans=1
-    set guifont=Menlo\ Regular:h12
+    set guifont=Menlo\ Regular:h13
 else
     "colourscheme desert
 endif
@@ -187,5 +201,22 @@ function! ModePHP()
 endfunction
 
 " Set line height
-set linespace=2
+set linespace=4
 
+" show function name in status bar
+" set statusline=%<%f\ %h%m%r\ %1*%{CTagInStatusLine()}%*%=%-14.(%l,%c%V%)\ %P
+" set statusline=%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P
+
+" set statusline=[%n]\ %<%.99f\ %h%w%m%r%{exists('*CapsLockStatusline')?CapsLockStatusline():''}%y%=%-16(\ %l,%c-%v\ %)%P
+
+command! -nargs=0 TagbarToggleStatusline call TagbarToggleStatusline()
+nnoremap <leader>s :TagbarToggleStatusline<CR>
+function! TagbarToggleStatusline()
+   let tStatusline = '%{exists(''*tagbar#currenttag'')?
+            \tagbar#currenttag(''     [%s] '',''''):''''}'
+   if stridx(&statusline, tStatusline) != -1
+      let &statusline = substitute(&statusline, '\V'.tStatusline, '', '')
+   else
+      let &statusline = substitute(&statusline, '\ze%=%-', tStatusline, '')
+   endif
+endfunction
