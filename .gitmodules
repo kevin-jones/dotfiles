@@ -25,3 +25,15 @@
 [submodule "tcomment_vim"]
 	path = .vim/bundle/tcomment_vim
 	url = https://github.com/tomtom/tcomment_vim
+[submodule "vim-airline"]
+	path = .vim/bundle/vim-airline
+    url = https://github.com/vim-airline/vim-airline
+[submodule "vim-nerdtree-tabs"]
+	path = .vim/bundle/vim-nerdtree-tabs
+    url = https://github.com/jistr/vim-nerdtree-tabs.git
+[submodule "yajs"]
+	path = .vim/bundle/yajs.vim
+    url = https://github.com/othree/yajs.vim
+[submodule ".vim/bundle/vim-closetag"]
+	path = .vim/bundle/vim-closetag
+	url = https://github.com/alvan/vim-closetag.git

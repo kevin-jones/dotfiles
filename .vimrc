@@ -31,6 +31,8 @@ nnoremap Q <Nop>
 nnoremap <leader>p :call ModePHP()<CR>
 " set the current file's syntax/indenting mode to HTML
 nnoremap <leader>h :call ModeHTML()<CR>
+" set the current file's syntax/indenting mode to JavaScript
+nnoremap <leader>j :call ModeJS()<CR>
 
 nnoremap <leader>i :gg=G``<CR>
 
@@ -163,6 +165,7 @@ if has("autocmd")
 	filetype on
 	" Treat .json files as .js
 	autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
+    autocmd FileType yaml,yml setlocal ts=2 sts=2 sw=2 expandtab
 	" Treat .md files as Markdown
 	autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
 endif
@@ -198,6 +201,10 @@ endfunction
 function! ModePHP()
     set filetype=php
     set syntax=php
+endfunction
+function! ModeJS()
+    set filetype=javascript
+    set syntax=javascript
 endfunction
 
 " Set line height
