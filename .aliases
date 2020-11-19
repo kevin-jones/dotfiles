@@ -105,3 +105,16 @@ alias l="ls -lF ${colorflag}"
 alias la="ls -laF ${colorflag}"
 alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
 
+alias l3='ssh -t papp03lon1 "sudo tail -f /var/log/apache2/error.log"'
+alias l4='ssh -t papp04lon1 "sudo tail -f /var/log/apache2/error.log"'
+alias l5='ssh -t papp05lon1 "sudo tail -f /var/log/apache2/error.log"'
+alias a3='ssh -t papp03lon1 "sudo tail -f /var/log/apache2/access.log"'
+alias a4='ssh -t papp04lon1 "sudo tail -f /var/log/apache2/access.log"'
+alias a5='ssh -t papp05lon1 "sudo tail -f /var/log/apache2/access.log"'
+
+function db() {
+    open "http://10.20.30.40:16002/?server=psql02lon1-do-user-910509-0.a.db.ondigitalocean.com%3A25060&username=shopblocks&db=merchant_$1"
+}
+function dbl() {
+    open "http://10.20.30.40:16002/?username=vagrant&username=vagrant&db=merchant_$1"
+}
