@@ -47,5 +47,3 @@ complete -W "NSGlobalDomain" defaults;
 # Add `killall` tab completion for common apps
 complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes SystemUIServer Terminal Twitter" killall;
 
-# set bash to vi mode so that you start in insert mode, but can exit to normal mode in the shell!
-set -o vi

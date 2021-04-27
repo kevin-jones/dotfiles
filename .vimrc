@@ -10,15 +10,22 @@ abclear
 " RELOAD VIMRC across all windows/tabs
 nnoremap <leader>v :tabdo source $MYVIMRC<CR>
 
+" Show recent file history and quickly jump to recently edited files
 nnoremap <leader>b :CtrlPBuffer<CR>
+
+" Open NerdTree (left hand sidebar file browser)
 nnoremap <Leader>n :NERDTreeTabsToggle<CR>
-nnoremap <leader>` :TagbarToggle<CR>
 
 " find current file in NERDTree
 nnoremap <leader>r :NERDTreeFind<CR>
 
+" Open Tagbar (right hand sidebar list of e.g. functions in current file)
+nnoremap <leader>` :TagbarToggle<CR>
+
 " open Ag for searching within all project files
 nnoremap <leader>f :Ag<space>
+
+" set current folder as working directory
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 
 " disable annoying "ex mode"
@@ -34,7 +41,8 @@ nnoremap <leader>h :call ModeHTML()<CR>
 " set the current file's syntax/indenting mode to JavaScript
 nnoremap <leader>j :call ModeJS()<CR>
 
-nnoremap <leader>i :gg=G``<CR>
+" apply identation and source formatting to current file
+nnoremap <leader>i mzgg=G`z
 
 " look up the word under the cursor on php.net
 nnoremap <F7> :call PHPHelp()<cr>
@@ -168,6 +176,13 @@ if has("autocmd")
     autocmd FileType yaml,yml setlocal ts=2 sts=2 sw=2 expandtab
 	" Treat .md files as Markdown
 	autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
+
+    " run a script
+    autocmd FileType python nnoremap <buffer> <leader>c :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
+
+    " Run current file
+    nnoremap <Leader>n :NERDTreeTabsToggle<CR>
+
 endif
 
 " Search php.net help for the function/class under the cursor
@@ -209,12 +224,6 @@ endfunction
 
 " Set line height
 set linespace=4
-
-" show function name in status bar
-" set statusline=%<%f\ %h%m%r\ %1*%{CTagInStatusLine()}%*%=%-14.(%l,%c%V%)\ %P
-" set statusline=%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P
-
-" set statusline=[%n]\ %<%.99f\ %h%w%m%r%{exists('*CapsLockStatusline')?CapsLockStatusline():''}%y%=%-16(\ %l,%c-%v\ %)%P
 
 command! -nargs=0 TagbarToggleStatusline call TagbarToggleStatusline()
 nnoremap <leader>s :TagbarToggleStatusline<CR>
